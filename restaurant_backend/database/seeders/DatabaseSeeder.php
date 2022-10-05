@@ -18,6 +18,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        User::create([
+            "name" => "admin",
+            "role" => "admin",
+            "email" => "admin@admin.com",
+            "password" => Hash::make("password"),
+            "remember_token" => Str::random(10),
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        //
+        Menu::create([
+            "discount" => null,
+        ]);
     }
 }
