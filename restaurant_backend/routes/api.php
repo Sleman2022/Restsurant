@@ -17,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 
+Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
+Route::put('/change-role', [\App\Http\Controllers\UsersController::class, 'change_role']);

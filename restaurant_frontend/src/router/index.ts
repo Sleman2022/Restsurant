@@ -18,9 +18,16 @@ const routes: Array<RouteRecordRaw> = [
         name: "builder",
         component: () => import("@/views/Builder.vue"),
       },
+      {
+        path: "/users",
+        name: "users",
+        component: () => import("@/users/users.vue"),
+        children: [
+        ],
+      },
     ],
   },
-    ///users
+  ///users
   // {
   //   path: "/users",
   //   redirect: "/users",
@@ -30,6 +37,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: () => import("@/components/page-layouts/Auth.vue"),
+    children: [
+      {
+        path: "/sign-in",
+        name: "sign-in",
+        component: () =>
+            import("@/views/crafted/authentication/basic-flow/SignIn.vue"),
+      },
+      {
+        path: "/sign-up",
+        name: "sign-up",
+        component: () =>
+            import("@/views/crafted/authentication/basic-flow/SignUp.vue"),
+      },
+    ],
   },
   {
     // the 404 route, when none of the above matches
