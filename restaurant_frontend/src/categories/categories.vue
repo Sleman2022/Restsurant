@@ -170,7 +170,7 @@
                 <el-input
                     v-model="category.discount"
                     @change="changeDiscount(category)"
-                    placeholder="Enter Menu Name"
+                    placeholder="Enter Discount"
                     name="discount"
                     :value="category.discount"
                     style="width:auto;"
@@ -185,10 +185,6 @@
                     >
                   </div>
                 </div>
-              </td>
-
-              <td>
-
               </td>
               <td class="text-end" v-if="role==1">
                 <button

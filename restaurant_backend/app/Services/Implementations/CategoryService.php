@@ -37,7 +37,7 @@ class CategoryService implements ICategoryService
         $parent_categories = new Collection();
         foreach($categories as $category)
         {
-            if(helper::categoryLevel($category)<4)
+            if((helper::categoryLevel($category)<4)&&(helper::noItemsChildren($category)))
             {
                 $parent_categories->add($category);
             }
@@ -75,5 +75,20 @@ class CategoryService implements ICategoryService
             return $category->save();
         }
         return false;
+    }
+
+    //
+    public function getLeafCategories()
+    {
+        $categories = Category::get();
+        $leaf_categories = new Collection();
+        foreach($categories as $category)
+        {
+            if(helper::noCategoryChildren($category))
+            {
+                $leaf_categories->add($category);
+            }
+        }
+        return $leaf_categories;
     }
 }

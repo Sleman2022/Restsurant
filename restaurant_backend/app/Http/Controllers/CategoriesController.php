@@ -45,8 +45,7 @@ class CategoriesController extends Controller
     //
     public function parentCategories()
     {
-        return CategoriesResource::collection($this->CategoryService->getCategories());
-//        return CategoriesResource::collection($this->CategoryService->getParentCategories());
+        return CategoriesResource::collection($this->CategoryService->getParentCategories());
     }
 
     //
@@ -99,5 +98,11 @@ class CategoriesController extends Controller
             'message' => 'Something went wrong',
             'data' => null
         ],400);
+    }
+    //
+    //
+    public function LeafCategories()
+    {
+        return CategoriesResource::collection($this->CategoryService->getLeafCategories());
     }
 }

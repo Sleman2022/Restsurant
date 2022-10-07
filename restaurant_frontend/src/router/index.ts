@@ -38,6 +38,13 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/categories/categories.vue"),
         children: [
         ],
+      },
+      {
+        path: "/items",
+        name: "items",
+        component: () => import("@/items/items.vue"),
+        children: [
+        ],
       }
     ],
   },

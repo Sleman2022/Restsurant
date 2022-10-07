@@ -32,7 +32,15 @@ Route::delete('/delete-menu/{id}', [\App\Http\Controllers\MenusController::class
 
 Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'index']);
 Route::get('/parent-categories', [\App\Http\Controllers\CategoriesController::class, 'parentCategories']);
+Route::get('/leaf-categories', [\App\Http\Controllers\CategoriesController::class, 'leafCategories']);
 Route::post('/new-category', [\App\Http\Controllers\CategoriesController::class, 'newCategory']);
 Route::put('/edit-category/{id}', [\App\Http\Controllers\CategoriesController::class, 'updateCategory']);
 Route::put('/change-category-discount/{id}', [\App\Http\Controllers\CategoriesController::class, 'changeDiscount']);
 Route::delete('/delete-category/{id}', [\App\Http\Controllers\CategoriesController::class, 'deleteCategory']);
+
+Route::get('/items', [\App\Http\Controllers\ItemsController::class, 'index']);
+Route::post('/new-item', [\App\Http\Controllers\ItemsController::class, 'newItem']);
+Route::put('/change-item-discount/{id}', [\App\Http\Controllers\ItemsController::class, 'changeDiscount']);
+Route::put('/edit-item/{id}', [\App\Http\Controllers\ItemsController::class, 'updateItem']);
+Route::delete('/delete-item/{id}', [\App\Http\Controllers\ItemsController::class, 'deleteItem']);
+

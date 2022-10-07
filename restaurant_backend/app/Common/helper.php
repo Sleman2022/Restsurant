@@ -5,6 +5,7 @@ namespace App\Common;
 
 
 use App\Models\Category;
+use App\Models\Item;
 
 class helper
 {
@@ -25,4 +26,16 @@ class helper
          return helper::countCategoryLevel($parent_category,$level+1);
      }
   }
+
+  public static function noItemsChildren($category)
+  {
+      $items = Item::where('parent_id',$category->id)->get();
+      return !count($items);
+  }
+
+    public static function noCategoryChildren($category)
+    {
+        $category = Category::where('parent_id',$category->id)->get();
+        return !count($category);
+    }
 }

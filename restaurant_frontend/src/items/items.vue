@@ -1,8 +1,8 @@
 <template>
-  <!--begin::Modal - edit Menu-->
+  <!--begin::Modal - edit Item-->
   <div
       class="modal"
-      id="EditMenuModal"
+      id="EditItemModal"
       tabindex="-1"
       aria-hidden="true"
   >
@@ -16,7 +16,7 @@
           <div
               class="btn btn-sm btn-icon btn-active-color-primary"
               data-bs-dismiss="modal"
-              @click="getUsers(); getMenus();"
+              @click="getItems();"
           >
             <span class="svg-icon svg-icon-1">
               <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
@@ -31,14 +31,14 @@
           <!--begin:Form-->
           <el-form
               id="modal_edit_menu_form"
-              @submit.prevent="editsubmit()"
-              :model="editMenu"
+              @submit.prevent= "editsubmit()"
+              :model="editItem"
               class="form"
           >
             <!--begin::Heading-->
             <div class="mb-13 text-center">
               <!--begin::Title-->
-              <h1 class="mb-3">Edit Menu</h1>
+              <h1 class="mb-3">Edit Item</h1>
               <!--end::Title-->
             </div>
             <!--end::Heading-->
@@ -46,13 +46,14 @@
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span class="">Menu Name</span>
+                <span class="required">Item Name</span>
               </label>
               <!--end::Label-->
               <el-form-item prop="name">
                 <el-input
-                    v-model="editMenu.name"
-                    placeholder="Enter Menu Name"
+                    v-model="editItem.name"
+                    required
+                    placeholder="Enter Item Name"
                     name="name"
                 ></el-input>
               </el-form-item>
@@ -62,25 +63,43 @@
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span>Users</span>
+                <span class="required">Item Price</span>
+              </label>
+              <!--end::Label-->
+              <el-form-item prop="price">
+                <el-input
+                    v-model="editItem.price"
+                    type="number"
+                    placeholder="Enter Item Price"
+                    required
+                    name="price"
+                ></el-input>
+              </el-form-item>
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="d-flex flex-column mb-8 fv-row">
+              <!--begin::Label-->
+              <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                <span class="required">Parent</span>
               </label>
               <!--end::Label-->
 
-              <el-form-item prop="users">
+              <el-form-item prop="parent_id">
                 <el-select
-                    v-model = "editMenu.users"
-                    multiple
+                    v-model="editItem.parent_id"
                     filterable
                     allow-create
                     default-first-option
-                    placeholder="Choose user for your menu"
+                    placeholder="Choose Parent"
+                    required
+                    name="parent_id"
                 >
-                  <el-option v-for="(user, index) in editUsers" :key="index" :label=user.name :value=user.id> </el-option>
+                  <el-option v-for="(category, index) in leaf_category.data" :key="index" :label=category.name :value=category.id> </el-option>
                 </el-select>
               </el-form-item>
             </div>
             <!--end::Input group-->
-
             <!--begin::Actions-->
             <div class="text-center">
               <!--begin::Button-->
@@ -109,13 +128,13 @@
     </div>
     <!--end::Modal dialog-->
   </div>
-  <!--end::Modal - New Target-->
-  <NewMenuModal @submit="getUsers(); getMenus();" :users=my_users.data></NewMenuModal>
+<!--  end::Modal - New Item-->
+  <NewItemModal @submit="getItems(); getLeafCategories();" :categories=leaf_category.data></NewItemModal>
   <div class="card mb-5 mb-xl-8">
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
-        <span class="card-label fw-bolder fs-3 mb-1">Menus</span>
+        <span class="card-label fw-bolder fs-3 mb-1">Items</span>
       </h3>
 
       <div
@@ -124,17 +143,17 @@
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-trigger="hover"
-          title="New Menu"
+          title="New Item"
       >
         <a
             class="btn btn-sm btn-light-primary"
             data-bs-toggle="modal"
-            data-bs-target="#NewMenuModal"
+            data-bs-target="#NewItemModal"
         >
           <span class="svg-icon svg-icon-3">
             <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
           </span>
-          New Menu
+          New Item
         </a>
       </div>
     </div>
@@ -157,9 +176,9 @@
           <thead>
           <tr class="fw-bolder text-muted">
             <th class="min-w-150px">Name</th>
+            <th class="min-w-140px">Price</th>
             <th class="min-w-140px">Discount</th>
-            <th class="min-w-120px">Users</th>
-            <th class="min-w-100px text-end">Categories</th>
+            <th class="min-w-120px">Parent</th>
             <th class="min-w-100px text-end" v-if="role==1">Actions</th>
           </tr>
           </thead>
@@ -167,14 +186,25 @@
 
           <!--begin::Table body-->
           <tbody>
-          <template v-for="(menu, index) in menus.data" :key="index">
+          <template v-for="(item, index) in items.data" :key="index">
             <tr>
               <td>
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
                     <a
                         class="text-dark fw-bolder text-hover-primary fs-6"
-                    >{{ menu.name }}</a
+                    >{{ item.name }}</a
+                    >
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="d-flex justify-content-start flex-column">
+                    <a
+                        class="text-dark fw-bolder text-hover-primary fs-6"
+                    >{{ item.price }}</a
                     >
                   </div>
                 </div>
@@ -182,42 +212,41 @@
 
               <td v-if="role==1">
                 <a
-                    class="text-danger fw-bolder text-hover-primary d-block fs-6" v-if="menu.discount">
-                  {{ menu.discount }}%
+                    class="text-danger fw-bolder text-hover-primary d-block fs-6" v-if="item.discount">
+                  {{ item.discount }}%
                 </a>
                 <a
-                   class="text-danger fw-bolder text-hover-primary d-block fs-6" v-if="!menu.discount">
+                    class="text-danger fw-bolder text-hover-primary d-block fs-6" v-if="!item.discount">
                   0%
                 </a>
               </td>
               <td v-if="role==2">
                 <el-input
-                    v-model="menu.discount"
-                    @change="changeDiscount(menu)"
+                    v-model="item.discount"
+                    @change="changeDiscount(item)"
                     placeholder="Enter Discount"
                     name="discount"
-                    :value="menu.discount"
+                    :value="item.discount"
                     style="width:auto;"
                 ></el-input>%
               </td>
               <td>
-              <a
-                 class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                <div  v-for="(user, index2) in menu.users" :key="index2">
-                  <span class="fw-bold d-block fs-7">{{user.name}}</span>
+                <div class="d-flex align-items-center">
+                  <div class="d-flex justify-content-start flex-column">
+                    <a
+                        class="text-dark fw-bolder text-hover-primary fs-6"
+                    >{{item.parent_name}}</a
+                    >
+                  </div>
                 </div>
-              </a>
               </td>
 
-              <td>
-
-              </td>
               <td class="text-end" v-if="role==1">
                 <button
                     class="btn btn-sm btn-outline-info"
                     data-bs-toggle="modal"
-                    data-bs-target="#EditMenuModal"
-                    @click="editMenuChange(menu)" v-if="menu.id != 1"
+                    data-bs-target="#EditItemModal"
+                    @click="editItemChange(item)"
                 >
                 <span class="indicator-label">
                   edit
@@ -225,8 +254,7 @@
                 </button>
                 <button
                     class="btn btn-sm btn-outline-danger"
-                    v-if="menu.id != 1"
-                    @click="deleteMenu(menu.id)"
+                    @click="deleteItem(item.id)"
                 >
                 <span class="indicator-label">
                   delete
@@ -244,12 +272,12 @@
     </div>
     <!--begin::Body-->
   </div>
-  <el-pagination v-if="menus.meta"
-                 v-model:current-page="menus.meta.current_page"
-                 @current-change="getMenus"
-                 :page-size="menus.meta.per_page"
+  <el-pagination v-if="items.meta"
+                 v-model:current-page="items.meta.current_page"
+                 @current-change="getItems"
+                 :page-size="items.meta.per_page"
                  layout="prev, pager, next"
-                 :total="menus.meta.total"
+                 :total="items.meta.total"
                  :hide-on-single-page="true"
                  background
   >
@@ -260,28 +288,27 @@ import {defineComponent, ref} from "vue";
 import axios from "axios";
 import {useStore} from "vuex";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import NewMenuModal from "@/components/modals/menu/NewMenuModal.vue";
+import NewItemModal from "@/components/modals/item/NewItemModal.vue";
 export default defineComponent(
     {
-      name: "menus-listing",
+      name: "categories-listing",
       props: {
       },
       components: {
-        NewMenuModal,
+        NewItemModal,
       },
       data: function() {
         return {
-          my_users : [],
-          menus : [],
-          editUsers : [1],
-          editMenu : {},
+          leaf_category : [],
+          items : [],
+          editItem : {},
           page: 1,
           role:0,
         }
       },
       mounted() {
-        this.getUsers();
-        this.getMenus();
+        this.getLeafCategories();
+        this.getItems();
 
         const store = useStore();
         if(store.getters.userRole == 'admin') {
@@ -292,75 +319,62 @@ export default defineComponent(
         }
       },
       methods: {
-        getUsers()
+        getLeafCategories()
         {
           const self = this;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.get(process.env.VUE_APP_API_URL + '/no-menu-users')
+          axios.get(process.env.VUE_APP_API_URL + '/leaf-categories')
               .then(function (response) {
-                self.my_users = response.data;
-                self.editMenu = {};
+                self.leaf_category = response.data;
               })
               .catch(function (error) {
                 console.log(error);
               });
         },
-        getMenus(page = 1)
+        getItems(page = 1)
         {
           const self = this;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.get(process.env.VUE_APP_API_URL + '/menus?page=' + page)
+          axios.get(process.env.VUE_APP_API_URL + '/items?page=' + page)
               .then(function (response) {
-                self.menus = response.data;
+                self.items = response.data;
                 self.page = page;
               })
               .catch(function (error) {
                 console.log(error);
               });
         },
-        deleteMenu(menu_id)
+        deleteItem(item_id)
         {
           const self = this;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.delete(process.env.VUE_APP_API_URL + '/delete-menu/'+menu_id)
+          axios.delete(process.env.VUE_APP_API_URL + '/delete-item/'+item_id)
               .then(function (response) {
-               self.getUsers();
-               self.getMenus();
+                self.getLeafCategories();
+                self.getItems();
               })
               .catch(function (error) {
                 console.log(error);
               });
         },
-        editMenuChange(menu)
+        editItemChange(item)
         {
           const self = this;
-          self.editMenu = menu;
-          self.editUsers = [];
-          for (let i = 0; i < self.my_users['data'].length; i++)
-          {
-            self.editUsers.push(self.my_users['data'][i]);
-          }
-          for (let j = 0; j < self.editMenu['users'].length; j++)
-          {
-            if(self.editMenu['users'][j])
-            {
-              self.editUsers.push(self.editMenu['users'][j]);
-            }
-          }
+          self.editItem = item;
         },
         editSubmit() {
           const self = this;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.put(process.env.VUE_APP_API_URL + '/edit-menu/' + '8', self.editMenu)
+          axios.put(process.env.VUE_APP_API_URL + '/edit-item/' + '8', self.editItem)
               .then(function (response) {
-                self.getUsers();
-                self.getMenus();
+                self.getLeafCategories();
+                self.getItems();
                 Swal.fire({
-                  text: "Menu has been updated successfully",
+                  text: "Item has been updated successfully",
                   icon: "success",
                   buttonsStyling: false,
                   confirmButtonText: "Ok, got it!",
@@ -380,18 +394,17 @@ export default defineComponent(
             });
           });
         },
-        changeDiscount(menu)
+        changeDiscount(item)
         {
           const self = this;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.put(process.env.VUE_APP_API_URL + '/change-menu-discount/'+ menu.id,menu)
+          axios.put(process.env.VUE_APP_API_URL + '/change-item-discount/'+ item.id,item)
               .then(function (response) {
-                self.getUsers();
-                self.getMenus();
+                self.getItems();
               }).catch(function (error) {
-                   console.log(error);
-            });
+            console.log(error);
+          });
         }
       },
     });

@@ -12,4 +12,5 @@ interface ICategoryService
     public function changeDiscount($request);
     public function updateCategory($request);
     public function getParentCategories();
+    public function getLeafCategories();
 }
