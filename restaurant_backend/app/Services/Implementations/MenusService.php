@@ -3,6 +3,7 @@
 
 namespace App\Services\Implementations;
 
+use App\Models\Category_Menu;
 use App\Models\Menu;
 use App\Models\User;
 use App\Services\Interfaces\IMenuService;
@@ -31,6 +32,13 @@ class MenusService implements IMenuService
                 $my_user = User::find($user);
                 $my_user->menu_id = $menu->id;
                 $my_user->save();
+            }
+            foreach($request->categories as $category)
+            {
+                $category_menu = new Category_Menu();
+                $category_menu->menu_id = $menu->id;
+                $category_menu->category_id = $category;
+                $category_menu->save();
             }
         }
         return $check;

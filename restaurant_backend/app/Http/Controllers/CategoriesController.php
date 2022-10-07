@@ -23,7 +23,10 @@ class CategoriesController extends Controller
     public function index(){
         return CategoriesResource::collection($this->CategoryService->getCategories());
     }
-
+    //
+    public function rootCategories(){
+        return CategoriesResource::collection($this->CategoryService->rootCategories());
+    }
     //
     public function newCategory(Request $request)
     {

@@ -31,6 +31,7 @@ Route::put('/change-menu-discount/{id}', [\App\Http\Controllers\MenusController:
 Route::delete('/delete-menu/{id}', [\App\Http\Controllers\MenusController::class, 'deleteMenu']);
 
 Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'index']);
+Route::get('/root-categories', [\App\Http\Controllers\CategoriesController::class, 'rootCategories']);
 Route::get('/parent-categories', [\App\Http\Controllers\CategoriesController::class, 'parentCategories']);
 Route::get('/leaf-categories', [\App\Http\Controllers\CategoriesController::class, 'leafCategories']);
 Route::post('/new-category', [\App\Http\Controllers\CategoriesController::class, 'newCategory']);

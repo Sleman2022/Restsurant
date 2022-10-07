@@ -57,30 +57,6 @@
                 ></el-input>
               </el-form-item>
             </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="d-flex flex-column mb-8 fv-row">
-              <!--begin::Label-->
-              <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span>Users</span>
-              </label>
-              <!--end::Label-->
-
-              <el-form-item prop="users">
-                <el-select
-                    v-model = "editMenu.users"
-                    multiple
-                    filterable
-                    allow-create
-                    default-first-option
-                    placeholder="Choose user for your menu"
-                >
-                  <el-option v-for="(user, index) in editUsers" :key="index" :label=user.name :value=user.id> </el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-            <!--end::Input group-->
-
             <!--begin::Actions-->
             <div class="text-center">
               <!--begin::Button-->
@@ -110,7 +86,7 @@
     <!--end::Modal dialog-->
   </div>
   <!--end::Modal - New Target-->
-  <NewMenuModal @submit="getUsers(); getMenus();" :users=my_users.data></NewMenuModal>
+  <NewMenuModal @submit="getUsers(); getMenus();" :users=my_users.data :categories=root_categories.data></NewMenuModal>
   <div class="card mb-5 mb-xl-8">
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
@@ -159,7 +135,7 @@
             <th class="min-w-150px">Name</th>
             <th class="min-w-140px">Discount</th>
             <th class="min-w-120px">Users</th>
-            <th class="min-w-100px text-end">Categories</th>
+            <th class="min-w-100px">Categories</th>
             <th class="min-w-100px text-end" v-if="role==1">Actions</th>
           </tr>
           </thead>
@@ -210,7 +186,12 @@
               </td>
 
               <td>
-
+                <a
+                    class="text-dark fw-bolder text-hover-primary d-block fs-6">
+                  <div  v-for="(category, index3) in menu.categories" :key="index3">
+                    <span class="fw-bold d-block fs-7">{{category}}</span>
+                  </div>
+                </a>
               </td>
               <td class="text-end" v-if="role==1">
                 <button
@@ -272,6 +253,7 @@ export default defineComponent(
       data: function() {
         return {
           my_users : [],
+          root_categories : [],
           menus : [],
           editUsers : [1],
           editMenu : {},
@@ -281,6 +263,7 @@ export default defineComponent(
       },
       mounted() {
         this.getUsers();
+        this.getRootCategories();
         this.getMenus();
 
         const store = useStore();
@@ -292,6 +275,20 @@ export default defineComponent(
         }
       },
       methods: {
+        getRootCategories()
+        {
+          const self = this;
+          axios.defaults.headers.get['header-name'] = 'value';
+          axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+          axios.get(process.env.VUE_APP_API_URL + '/root-categories')
+              .then(function (response) {
+                self.root_categories = response.data;
+                self.editMenu = {};
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        },
         getUsers()
         {
           const self = this;

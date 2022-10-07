@@ -19,6 +19,10 @@ class CategoryService implements ICategoryService
         return Category::paginate();
     }
 
+    public function rootCategories()
+    {
+        return Category::whereNull('parent_id')->get();
+    }
     public function newCategory($request)
     {
         $category = new Category();

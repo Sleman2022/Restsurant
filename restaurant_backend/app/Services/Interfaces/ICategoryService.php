@@ -7,6 +7,7 @@ namespace App\Services\Interfaces;
 interface ICategoryService
 {
     public function getCategories();
+    public function rootCategories();
     public function newCategory($request);
     public function deleteCategoryItem($id);
     public function changeDiscount($request);

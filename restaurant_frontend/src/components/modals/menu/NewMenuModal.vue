@@ -85,6 +85,28 @@
               </el-form-item>
             </div>
             <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="d-flex flex-column mb-8 fv-row">
+              <!--begin::Label-->
+              <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                <span>Categories</span>
+              </label>
+              <!--end::Label-->
+
+              <el-form-item prop="categories">
+                <el-select
+                    v-model="menuData.categories"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    placeholder="Choose Category for your menu"
+                >
+                  <el-option v-for="(category, index) in categories" :key="index" :label=category.name :value=category.id> </el-option>
+                </el-select>
+              </el-form-item>
+            </div>
+            <!--end::Input group-->
 
             <!--begin::Actions-->
             <div class="text-center">
@@ -130,12 +152,14 @@ import axios from "axios";
 interface NewAddressData {
   name: string;
   users: Array<string>;
+  categories: Array<string>;
 }
 
 export default defineComponent({
   name: "new-menu-modal",
   props: {
     users: Array,
+    categories: Array,
   },
   components: {},
   setup() {
@@ -146,6 +170,7 @@ export default defineComponent({
     const menuData = ref<NewAddressData>({
       name: "",
       users: [],
+      categories: [],
     });
 
     const rules = ref({
