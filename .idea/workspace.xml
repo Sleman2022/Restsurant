@@ -20,14 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99643101-c7bf-4bf3-9abe-5359c65223fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/UsersService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IUsersService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/users/users.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Menus/MenusResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/MenusService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IMenuService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/components/modals/menu/NewMenuModal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/menus/menus.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Models/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Models/Menu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/UsersService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/UsersService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IUsersService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IUsersService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/database/migrations/2022_09_24_223610_create_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/database/migrations/2022_09_24_223610_create_menu_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/layout/header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/layout/header/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/layout/header/partials/UserMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/layout/header/partials/UserMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/users/users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/users/users.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +173,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab_Learning" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -171,9 +183,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bein media\resaturant\restaurant_backend\app\Http\Resources\UsersResources" />
       <recent name="D:\bein media\resaturant\restaurant_backend\app\Http\Controllers" />
       <recent name="D:\bein media\resaturant\restaurant_frontend\src" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="/" />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -184,7 +202,8 @@
       <option name="presentableId" value="Default" />
       <updated>1664961511337</updated>
       <workItem from="1664961512635" duration="1190000" />
-      <workItem from="1664962730282" duration="13812000" />
+      <workItem from="1664962730282" duration="31571000" />
+      <workItem from="1665047588195" duration="47118000" />
     </task>
     <task id="LOCAL-00001" summary="database migration and seeders">
       <created>1664962857337</created>
@@ -193,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664962857337</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="users and change role">
+      <created>1665005085956</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665005085956</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,31 +235,45 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="database migration and seeders" />
-    <option name="LAST_COMMIT_MESSAGE" value="database migration and seeders" />
+    <MESSAGE value="users and change role" />
+    <option name="LAST_COMMIT_MESSAGE" value="users and change role" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1664984034729">
+    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1665077651911">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1664984034729" />
-    <state x="349" y="143" key="IDE.errors.dialog" timestamp="1664962370290">
+    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1665077651911" />
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1665047596938">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="349" y="143" key="IDE.errors.dialog/0.0.1536.816@0.0.1536.816" timestamp="1664962370290" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1665047596938" />
+    <state x="349" y="143" key="IDE.errors.dialog" timestamp="1665084546056">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="349" y="143" key="IDE.errors.dialog/0.0.1536.816@0.0.1536.816" timestamp="1665084546056" />
     <state x="613" y="111" key="RollbackChangesDialog" timestamp="1664976240392">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="613" y="111" key="RollbackChangesDialog/0.0.1536.816@0.0.1536.816" timestamp="1664976240392" />
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1664962866127">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1665005110422">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1664962866127" />
-    <state x="478" y="141" width="579" height="534" key="find.popup" timestamp="1664976048510">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1665005110422" />
+    <state x="478" y="141" width="807" height="534" key="find.popup" timestamp="1665098238346">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="478" y="141" width="579" height="534" key="find.popup/0.0.1536.816@0.0.1536.816" timestamp="1664976048510" />
+    <state x="478" y="141" width="807" height="534" key="find.popup/0.0.1536.816@0.0.1536.816" timestamp="1665098238346" />
+    <state x="425" y="185" key="run.anything.popup" timestamp="1665091323401">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="425" y="185" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1665091323401" />
+    <state x="431" y="137" width="672" height="678" key="search.everywhere.popup" timestamp="1665092446118">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="431" y="137" width="672" height="678" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1665092446118" />
   </component>
 </project>

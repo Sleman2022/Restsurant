@@ -16,6 +16,7 @@ export interface UserAuthInfo {
   user: User;
   isAuthenticated: boolean;
   role: string;
+  api_token: string;
 }
 
 @Module
@@ -24,6 +25,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   user = {} as User;
   isAuthenticated = !!JwtService.getToken();
   role = '';
+  api_token = '';
   /**
    * Get current user object
    * @returns User
@@ -49,6 +51,14 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   }
 
   /**
+   * Verify user authentication
+   * @returns string
+   */
+  get userToken(): string {
+    return this.api_token;
+  }
+
+  /**
    * Get authentification errors
    * @returns array
    */
@@ -66,6 +76,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
     this.isAuthenticated = true;
     this.user = user;
     this.role = this.user.roles;
+    this.api_token = this.user.api_token;
     this.errors = [];
     JwtService.saveToken(this.user.api_token);
   }
@@ -79,6 +90,7 @@ export default class AuthModule extends VuexModule implements UserAuthInfo {
   [Mutations.PURGE_AUTH]() {
     this.isAuthenticated = false;
     this.role = '';
+    this.api_token = '';
     // this.user = {} as User;
     this.errors = [];
     JwtService.destroyToken();

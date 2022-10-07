@@ -21,4 +21,11 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 
 Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
+Route::get('/no-menu-users', [\App\Http\Controllers\UsersController::class, 'noMenuUsers']);
 Route::put('/change-role', [\App\Http\Controllers\UsersController::class, 'change_role']);
+
+Route::get('/menus', [\App\Http\Controllers\MenusController::class, 'index']);
+Route::post('/new-menu', [\App\Http\Controllers\MenusController::class, 'newMenu']);
+Route::put('/edit-menu/{id}', [\App\Http\Controllers\MenusController::class, 'updateMenu']);
+Route::put('/change-menu-discount/{id}', [\App\Http\Controllers\MenusController::class, 'changeDiscount']);
+Route::delete('/delete-menu/{id}', [\App\Http\Controllers\MenusController::class, 'deleteMenu']);

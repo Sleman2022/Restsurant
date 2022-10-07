@@ -25,6 +25,13 @@ const routes: Array<RouteRecordRaw> = [
         children: [
         ],
       },
+      {
+        path: "/menus",
+        name: "menus",
+        component: () => import("@/menus/menus.vue"),
+        children: [
+        ],
+      },
     ],
   },
   ///users

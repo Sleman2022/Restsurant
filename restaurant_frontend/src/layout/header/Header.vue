@@ -32,24 +32,6 @@
           pb-2 pb-lg-0
         "
       >
-        <!--begin::Heading-->
-        <h1 class="text-dark fw-bolder my-0 fs-2">{{ title }}</h1>
-        <!--end::Heading-->
-        <!--begin::Breadcrumb-->
-        <ul v-if="breadcrumbs" class="breadcrumb fw-bold fs-base my-1">
-          <li class="breadcrumb-item text-muted">
-            <router-link to="/dashboard" class="text-muted"> Home </router-link>
-          </li>
-          <template v-for="(item, index) in breadcrumbs" :key="index">
-            <li class="breadcrumb-item text-dark">
-              {{ item }}
-            </li>
-          </template>
-<!--          <li class="breadcrumb-item text-dark">-->
-<!--            {{ title }}-->
-<!--          </li>-->
-        </ul>
-        <!--end::Breadcrumb-->
       </div>
 
       <!--begin::Wrapper-->

@@ -1,9 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header border-0 pt-6">
-      <div class="card-toolbar">
-      </div>
-      <!--end::Card toolbar-->
+      <h1 class="text-dark fw-bolder my-0 fs-2">Users</h1>
     </div>
     <div class="card-body pt-0">
       <!--begin::Users-->
@@ -22,18 +20,10 @@
             >
               <!--begin::Details-->
               <div class="d-flex align-items-center">
-<!--                &lt;!&ndash;begin::Avatar&ndash;&gt;-->
-<!--                <div class="symbol symbol-35px symbol-circle">-->
-<!--                  <img v-if="user.avatar" alt="Pic" :src="user.avatar" />-->
-<!--                        {{ user.name}}-->
-<!--                </div>-->
-<!--                &lt;!&ndash;end::Avatar&ndash;&gt;-->
-
                 <!--begin::Details-->
                 <div class="ms-6">
                   <!--begin::Name-->
                   <a
-                      href="#"
                       class="
                           d-flex
                           align-items-center
@@ -50,6 +40,9 @@
                     <span v-if="user.role == 'admin'" class="badge badge-light-success fs-8 fw-bold ms-2">
                           {{ user.role }}
                     </span>
+                    <span v-if="user.role == 'restaurant admin'" class="badge badge-light-warning fs-8 fw-bold ms-2">
+                          {{ user.role }}
+                    </span>
                   </a>
                   <!--end::Name-->
 
@@ -64,7 +57,7 @@
               <!--begin::Stats-->
               <div class="d-flex">
                 <!--begin::Row-->
-                <div class="row fv-row">
+                <div class="row fv-row" v-if="user.email != 'admin@admin.com'">
                   <!--begin::Col-->
                     <Field
                         v-model="user.role"
@@ -77,6 +70,7 @@
                         @change="changeRole(user.role,user.id)"
                     >
                       <option value="admin">admin</option>
+                      <option value="restaurant admin">restaurant admin</option>
                       <option value="user">user</option>
                     </Field>
                 </div>
@@ -108,10 +102,7 @@ import { Field} from "vee-validate";
 import axios from "axios";
 export default defineComponent(
 {
-  name: "customers-listing",
-  props: {
-    users: {},
-    },
+  name: "users-listing",
   components: {
     Field,
   },

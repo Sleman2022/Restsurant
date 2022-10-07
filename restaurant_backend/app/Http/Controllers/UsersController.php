@@ -40,4 +40,9 @@ class UsersController extends Controller
             'data' => null
         ],400);
     }
+
+    //
+    public function noMenuUsers(){
+        return UsersResource::collection($this->UsersService->noMenuUsers());
+    }
 }

@@ -30,4 +30,9 @@ class UsersService implements IUsersService
         }
         return false;
     }
+
+    public function noMenuUsers()
+    {
+        return User::whereNull('menu_id')->get();
+    }
 }
