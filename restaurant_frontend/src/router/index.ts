@@ -45,16 +45,29 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/items/items.vue"),
         children: [
         ],
-      }
+      },
+      {
+        path: '/category-children/:id',
+        name: 'category-children',
+        component: () => import("@/categories/categories_children.vue"),
+      },
+      {
+        path: '/category-children2/:id',
+        name: 'category-children2',
+        component: () => import("@/categories/categories_children2.vue"),
+      },
+      {
+        path: '/category-children3/:id',
+        name: 'category-children3',
+        component: () => import("@/categories/categories_children3.vue"),
+      },
+      {
+        path: '/category-children4/:id',
+        name: 'category-children4',
+        component: () => import("@/categories/categories_children4.vue"),
+      },
     ],
   },
-  ///users
-  // {
-  //   path: "/users",
-  //   redirect: "/users",
-  //   component: () => import("@/users/users.vue"),
-  //   children: [],
-  // },
   {
     path: "/",
     component: () => import("@/components/page-layouts/Auth.vue"),

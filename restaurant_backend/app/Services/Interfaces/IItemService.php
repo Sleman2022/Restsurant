@@ -11,4 +11,5 @@ interface IItemService
     public function deleteItem($id);
     public function updateItem($request);
     public function newItem($request);
+    public function subCategoriesItems($id);
 }

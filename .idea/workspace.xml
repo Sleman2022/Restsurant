@@ -20,15 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99643101-c7bf-4bf3-9abe-5359c65223fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Categories/CategoriesShowResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Items/ItemsShowResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children3.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children4.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/components/widgets/categories/category.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Menus/MenusResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Menus/MenusResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/ItemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/ItemService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/MenusService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/MenusService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/ICategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/ICategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IItemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IItemService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IMenuService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IMenuService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restaurant_backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/components/modals/menu/NewMenuModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/components/modals/menu/NewMenuModal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/menus/menus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/menus/menus.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/views/Dashboard.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +204,7 @@
       <workItem from="1664961512635" duration="1190000" />
       <workItem from="1664962730282" duration="31571000" />
       <workItem from="1665047588195" duration="47504000" />
-      <workItem from="1665128013653" duration="32079000" />
+      <workItem from="1665128013653" duration="45465000" />
     </task>
     <task id="LOCAL-00001" summary="database migration and seeders">
       <created>1664962857337</created>
@@ -244,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665161203304</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="menus categories logic">
+      <created>1665165401288</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665165401288</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,13 +288,14 @@
     <MESSAGE value="categories crud" />
     <MESSAGE value="categories crud2" />
     <MESSAGE value="items crud" />
-    <option name="LAST_COMMIT_MESSAGE" value="items crud" />
+    <MESSAGE value="menus categories logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="menus categories logic" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1665160912577">
+    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1665180523256">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1665160912577" />
+    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1665180523256" />
     <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1665128039248">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
@@ -293,14 +312,14 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="613" y="111" key="RollbackChangesDialog/0.0.1536.816@0.0.1536.816" timestamp="1664976240392" />
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1665161208016">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1665165405026">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1665161208016" />
-    <state x="478" y="141" width="807" height="534" key="find.popup" timestamp="1665150085437">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1665165405026" />
+    <state x="478" y="141" width="807" height="534" key="find.popup" timestamp="1665178500022">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="478" y="141" width="807" height="534" key="find.popup/0.0.1536.816@0.0.1536.816" timestamp="1665150085437" />
+    <state x="478" y="141" width="807" height="534" key="find.popup/0.0.1536.816@0.0.1536.816" timestamp="1665178500022" />
     <state x="425" y="185" key="run.anything.popup" timestamp="1665129216713">
       <screen x="0" y="0" width="1536" height="816" />
     </state>

@@ -56,4 +56,10 @@ class ItemService implements IItemService
         $check = $item->save();
         return $check;
     }
+
+    //
+    public function subCategoriesItems($id)
+    {
+        return Item::where('parent_id',$id)->get();
+    }
 }

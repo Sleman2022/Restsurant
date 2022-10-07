@@ -45,3 +45,6 @@ Route::put('/change-item-discount/{id}', [\App\Http\Controllers\ItemsController:
 Route::put('/edit-item/{id}', [\App\Http\Controllers\ItemsController::class, 'updateItem']);
 Route::delete('/delete-item/{id}', [\App\Http\Controllers\ItemsController::class, 'deleteItem']);
 
+Route::get('/menu-root-categories', [\App\Http\Controllers\CategoriesController::class, 'menuRootCategories']);
+Route::get('/sub-categories-items', [\App\Http\Controllers\CategoriesController::class, 'subCategoriesItems']);
+

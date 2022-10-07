@@ -3,20 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\Categories\CategoriesResource;
+use App\Http\Resources\Categories\CategoriesShowResource;
+use App\Http\Resources\Items\ItemsResource;
+use App\Http\Resources\Items\ItemsShowResource;
 use App\Services\Implementations\CategoryService;
+use App\Services\Implementations\ItemService;
 use App\Services\Interfaces\ICategoryService;
+use App\Services\Interfaces\IMenuService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoriesController extends Controller
 {
-    //
     /**
      * @var ICategoryService
      */
     private $CategoryService;
-    public function __construct(CategoryService $CategoryService)
+
+    /**
+     * @var IMenuService
+     */
+    private $MenuService;
+    /**
+     * @var ItemService
+     */
+    private $ItemService;
+
+    public function __construct(CategoryService $CategoryService ,IMenuService $MenuService,ItemService $ItemService)
     {
         $this->CategoryService = $CategoryService;
+        $this->MenuService = $MenuService;
+        $this->ItemService = $ItemService;
     }
 
     //
@@ -103,9 +120,23 @@ class CategoriesController extends Controller
         ],400);
     }
     //
-    //
     public function LeafCategories()
     {
         return CategoriesResource::collection($this->CategoryService->getLeafCategories());
+    }
+    //
+    public function menuRootCategories(Request $request)
+    {
+        return CategoriesResource::collection($this->MenuService->menuRootCategories($request->token));
+    }
+    //
+    public function subCategoriesItems(Request $request)
+    {
+        Session::put('token',$request->token);
+        return $data =
+            [
+                'categories' => CategoriesShowResource::collection($this->CategoryService->subCategoriesItems($request->id)),
+                'items' => ItemsShowResource::collection($this->ItemService->subCategoriesItems($request->id)),
+            ];
     }
 }

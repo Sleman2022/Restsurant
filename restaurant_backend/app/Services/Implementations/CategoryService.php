@@ -95,4 +95,9 @@ class CategoryService implements ICategoryService
         }
         return $leaf_categories;
     }
+    //
+    public function subCategoriesItems($id)
+    {
+        return Category::where('parent_id',$id)->get();
+    }
 }

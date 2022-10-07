@@ -3,11 +3,13 @@
 
 namespace App\Services\Implementations;
 
+use App\Models\Category;
 use App\Models\Category_Menu;
 use App\Models\Menu;
 use App\Models\User;
 use App\Services\Interfaces\IMenuService;
 use App\Services\Interfaces\IUsersService;
+use Illuminate\Support\Collection;
 
 class MenusService implements IMenuService
 {
@@ -94,5 +96,23 @@ class MenusService implements IMenuService
             return $menu->save();
         }
         return false;
+    }
+    public function menuRootCategories($token)
+    {
+        $user = User::where('remember_token',$token)->first();
+        if($user->menu_id)
+        {
+            $categoriesCollection = new Collection();
+            $categories_menus = Category_Menu::where('menu_id', $user->menu_id)->get();
+            foreach ($categories_menus as $categories_menu) {
+                $category = Category::find($categories_menu->category_id);
+                $categoriesCollection->add($category);
+            }
+            return $categoriesCollection;
+        }
+        else
+        {
+           return  $categories = Category::whereNull('parent_id')->get();
+        }
     }
 }

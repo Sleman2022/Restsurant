@@ -11,4 +11,5 @@ interface IMenuService
     public function deleteMenu($id);
     public function changeDiscount($request);
     public function updateMenu($request);
+    public function menuRootCategories($token);
 }

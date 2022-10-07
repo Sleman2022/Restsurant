@@ -14,4 +14,5 @@ interface ICategoryService
     public function updateCategory($request);
     public function getParentCategories();
     public function getLeafCategories();
+    public function subCategoriesItems($id);
 }

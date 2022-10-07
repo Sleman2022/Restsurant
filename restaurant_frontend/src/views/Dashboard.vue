@@ -1,106 +1,95 @@
 <template>
   <!--begin::Dashboard-->
-  <div class="row gy-5 g-xl-8">
-    <div class="col-xxl-4">
-      <MixedWidget2
-        widget-classes="card-xl-stretch mb-xl-8"
-        widget-color="danger"
-        chart-height="200"
-        stroke-color="#cb1e46"
-      ></MixedWidget2>
-    </div>
-    <div class="col-xxl-4">
-      <ListWidget5
-        widget-classes="card-xxl-stretch mb-5 mb-xl-10"
-      ></ListWidget5>
-    </div>
-    <div class="col-xxl-4">
-      <MixedWidget7
-        widget-classes="card-xxl-stretch-50 mb-5 mb-xl-8"
-        chart-color="primary"
-        chart-height="150"
-      ></MixedWidget7>
-      <MixedWidget10
-        widget-classes="card-xxl-stretch-50 mb-5 mb-xl-8"
-        chart-color="primary"
-        chart-height="168"
-      ></MixedWidget10>
-    </div>
-  </div>
-
-  <div class="row gy-5 gx-xl-8">
-    <div class="col-xxl-4">
-      <ListWidget3 widget-classes="card-xxl-stretch mb-xl-3"></ListWidget3>
-    </div>
-    <div class="col-xxl-8">
-      <TableWidget9
-        widget-classes="card-xxl-stretch mb-5 mb-xl-8"
-      ></TableWidget9>
-    </div>
-  </div>
-
-  <div class="row gy-5 g-xl-8">
-    <div class="col-xxl-4">
-      <ListWidget2 widget-classes="card-xl-stretch mb-xl-8"></ListWidget2>
-    </div>
-    <div class="col-xxl-4">
-      <ListWidget6 widget-classes="card-xl-stretch mb-xl-8"></ListWidget6>
-    </div>
-    <div class="col-xxl-4">
-      <ListWidget1 widget-classes="card-xxl-stretch mb-xl-3"></ListWidget1>
+  <div class="row g-5 g-xl-8" v-for="(category, index) in root_categories.data" :key="index">
+    <div class="col-xl-4">
+      <router-link
+          class="nav-link text-active-primary me-6"
+          :to="{ name: 'category-children', params: {id: category.id } }"
+      >
+      <StatisticsWidget5
+          widget-classes="card-xl-stretch mb-xl-8"
+          svg-icon="media/icons/duotune/ecommerce/ecm002.svg"
+          color="danger"
+          v-if="(index % 4)==1"
+          icon-color="white"
+          :title="category.name"
+          :description="category.discount"
+      ></StatisticsWidget5>
+      <StatisticsWidget5
+          widget-classes="card-xl-stretch mb-xl-8"
+          svg-icon="media/icons/duotune/ecommerce/ecm002.svg"
+          color="primary"
+          v-if="(index % 4)==2"
+          icon-color="white"
+          :title="category.name"
+          :description="category.discount"
+      ></StatisticsWidget5>
+      <StatisticsWidget5
+          widget-classes="card-xl-stretch mb-xl-8"
+          svg-icon="media/icons/duotune/ecommerce/ecm002.svg"
+          color="success"
+          v-if="(index % 4)==3"
+          icon-color="white"
+          :title="category.name"
+          :description="category.discount"
+      ></StatisticsWidget5>
+      <StatisticsWidget5
+          widget-classes="card-xl-stretch mb-xl-8"
+          svg-icon="media/icons/duotune/ecommerce/ecm002.svg"
+          color="warning"
+          v-if="(index % 4)==0"
+          icon-color="white"
+          :title="category.name"
+          :description="category.discount"
+      ></StatisticsWidget5>
+      </router-link>
     </div>
   </div>
-
-  <div class="row g-5 gx-xxl-8">
-    <div class="col-xxl-4">
-      <MixedWidget5
-        widget-classes="card-xl-stretch mb-xl-8"
-        chart-color="success"
-        chart-height="150"
-      ></MixedWidget5>
-    </div>
-    <div class="col-xxl-8">
-      <TableWidget5
-        widget-classes="card-xxl-stretch mb-5 mb-xxl-8"
-      ></TableWidget5>
-    </div>
-  </div>
+  <!--end::Row-->
   <!--end::Dashboard-->
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-// import TableWidget9 from "@/components/widgets/tables/Widget9.vue";
-// import TableWidget5 from "@/components/widgets/tables/Widget5.vue";
-// import ListWidget1 from "@/components/widgets/lists/Widget1.vue";
-// import ListWidget2 from "@/components/widgets/lists/Widget2.vue";
-// import ListWidget3 from "@/components/widgets/lists/Widget3.vue";
-// import ListWidget5 from "@/components/widgets/lists/Widget5.vue";
-// import ListWidget6 from "@/components/widgets/lists/Widget6.vue";
-// import MixedWidget2 from "@/components/widgets/mixed/Widget2.vue";
-// import MixedWidget5 from "@/components/widgets/mixed/Widget5.vue";
-// import MixedWidget7 from "@/components/widgets/mixed/Widget7.vue";
-// import MixedWidget10 from "@/components/widgets/mixed/Widget10.vue";
+import StatisticsWidget5 from "@/components/widgets/categories/category.vue";
 import { setCurrentPageTitle } from "@/core/helpers/breadcrumb";
+import {useStore} from "vuex";
+import axios from "axios";
 
 export default defineComponent({
-  name: "dashboard",
+  name: "menu",
   components: {
-    // TableWidget9,
-    // TableWidget5,
-    // ListWidget1,
-    // ListWidget2,
-    // ListWidget3,
-    // ListWidget5,
-    // ListWidget6,
-    // MixedWidget2,
-    // MixedWidget5,
-    // MixedWidget7,
-    // MixedWidget10,
+    StatisticsWidget5
+  },
+  data: function() {
+    return {
+      root_categories : [],
+      token: {},
+    }
+  },
+  mounted() {
+    const store = useStore();
+    this.token = store.getters.userToken;
+    this.getRootCategories();
+  },
+  methods: {
+    getRootCategories()
+    {
+      const self = this;
+      axios.defaults.headers.get['header-name'] = 'value';
+      axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+      axios.get(process.env.VUE_APP_API_URL + '/menu-root-categories?token='+self.token)
+          .then(function (response) {
+            self.root_categories = response.data;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
   },
   setup() {
     onMounted(() => {
-      setCurrentPageTitle("Dashboard");
+      setCurrentPageTitle("Menu");
     });
   },
 });

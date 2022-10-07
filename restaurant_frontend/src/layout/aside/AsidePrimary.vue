@@ -13,9 +13,12 @@
       "
         id="kt_aside_logo"
     >
-      <a href="/">
+      <router-link
+          class="nav-link text-active-primary me-6"
+          to="/dashboard"
+      >
         <img alt="Logo" src="media/logos/logo-demo7.svg" class="h-30px" />
-      </a>
+      </router-link>
     </div>
 
     <div
@@ -53,7 +56,7 @@
           >
             <router-link
                 class="nav-link text-active-primary me-6"
-                to="users"
+                to="/users"
             >
               <span class="svg-icon svg-icon-2x">
                 <inline-svg src="media/icons/duotune/general/gen049.svg" />
@@ -73,7 +76,7 @@
           >
             <router-link
                 class="nav-link text-active-primary me-6"
-                to="menus"
+                to="/menus"
                 active-class="unActive"
             >
               <span class="svg-icon svg-icon-2x">
@@ -94,7 +97,7 @@
           >
             <router-link
                 class="nav-link text-active-primary me-6"
-                to="categories"
+                to="/categories"
                 active-class="unActive"
             >
               <span class="svg-icon svg-icon-2x">
