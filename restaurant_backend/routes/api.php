@@ -29,3 +29,10 @@ Route::post('/new-menu', [\App\Http\Controllers\MenusController::class, 'newMenu
 Route::put('/edit-menu/{id}', [\App\Http\Controllers\MenusController::class, 'updateMenu']);
 Route::put('/change-menu-discount/{id}', [\App\Http\Controllers\MenusController::class, 'changeDiscount']);
 Route::delete('/delete-menu/{id}', [\App\Http\Controllers\MenusController::class, 'deleteMenu']);
+
+Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'index']);
+Route::get('/parent-categories', [\App\Http\Controllers\CategoriesController::class, 'parentCategories']);
+Route::post('/new-category', [\App\Http\Controllers\CategoriesController::class, 'newCategory']);
+Route::put('/edit-category/{id}', [\App\Http\Controllers\CategoriesController::class, 'updateCategory']);
+Route::put('/change-category-discount/{id}', [\App\Http\Controllers\CategoriesController::class, 'changeDiscount']);
+Route::delete('/delete-category/{id}', [\App\Http\Controllers\CategoriesController::class, 'deleteCategory']);

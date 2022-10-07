@@ -28,6 +28,16 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        User::create([
+            "name" => "restaurant admin",
+            "role" => "restaurant admin",
+            "email" => "restaurant_admin@restaurant_admin.com",
+            "password" => Hash::make("password"),
+            "remember_token" => Str::random(10),
+            'email_verified_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
         //
         Menu::create([
             "discount" => null,

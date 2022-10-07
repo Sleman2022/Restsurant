@@ -94,7 +94,7 @@
           >
             <router-link
                 class="nav-link text-active-primary me-6"
-                to="#"
+                to="categories"
                 active-class="unActive"
             >
               <span class="svg-icon svg-icon-2x">

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('category_menu', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("menu_id")->nullable();
-            $table->foreign("menu_id")->references("id")->on("menus");
+            $table->foreign("menu_id")->references("id")->on("menus")->onDelete('cascade');;
             $table->unsignedBigInteger("category_id")->nullable();
-            $table->foreign("category_id")->references("id")->on("categories");
+            $table->foreign("category_id")->references("id")->on("categories")->onDelete('cascade');;
             $table->timestamps();
         });
     }

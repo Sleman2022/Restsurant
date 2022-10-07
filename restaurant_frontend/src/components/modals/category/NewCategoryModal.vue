@@ -1,9 +1,9 @@
 <template>
-  <!--begin::Modal - New Menu-->
+  <!--begin::Modal - New Category-->
   <div
       class="modal fade"
-      id="NewMenuModal"
-      ref="newMenuModalRef"
+      id="NewCategoryModal"
+      ref="newCategoryModalRef"
       tabindex="-1"
       aria-hidden="true"
   >
@@ -30,9 +30,9 @@
         <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
           <!--begin:Form-->
           <el-form
-              id="modal_new_menu_form"
+              id="modal_new_category_form"
               @submit.prevent="submit()"
-              :model="menuData"
+              :model="categoryData"
               :rules="rules"
               ref="formRef"
               class="form"
@@ -40,7 +40,7 @@
             <!--begin::Heading-->
             <div class="mb-13 text-center">
               <!--begin::Title-->
-              <h1 class="mb-3">New Menu</h1>
+              <h1 class="mb-3">New Category</h1>
               <!--end::Title-->
             </div>
             <!--end::Heading-->
@@ -49,14 +49,14 @@
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span class="required">Menu Name</span>
+                <span class="required">Category Name</span>
               </label>
               <!--end::Label-->
 
               <el-form-item prop="name">
                 <el-input
-                    v-model="menuData.name"
-                    placeholder="Enter Menu Name"
+                    v-model="categoryData.name"
+                    placeholder="Enter Category Name"
                     name="name"
                 ></el-input>
               </el-form-item>
@@ -67,20 +67,21 @@
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                <span>Users</span>
+                <span>Parent</span>
               </label>
               <!--end::Label-->
 
-              <el-form-item prop="users">
+              <el-form-item prop="parent_id">
                 <el-select
-                    v-model="menuData.users"
-                    multiple
+                    v-model="categoryData.parent_id"
                     filterable
                     allow-create
                     default-first-option
-                    placeholder="Choose user for your menu"
+                    placeholder="Choose Parent"
+                    name="parent_id"
                 >
-                  <el-option v-for="(user, index) in users" :key="index" :label=user.name :value=user.id> </el-option>
+                  <el-option label="" :value=null> </el-option>
+                  <el-option v-for="(category, index) in categories" :key="index" :label=category.name :value=category.id> </el-option>
                 </el-select>
               </el-form-item>
             </div>
@@ -129,30 +130,30 @@ import axios from "axios";
 
 interface NewAddressData {
   name: string;
-  users: Array<string>;
+  parent_id: null;
 }
 
 export default defineComponent({
-  name: "new-menu-modal",
+  name: "new-category-modal",
   props: {
-    users: Array,
+    categories: Array,
   },
   components: {},
   setup() {
     const formRef = ref<null | HTMLFormElement>(null);
-    const newMenuModalRef = ref<null | HTMLElement>(null);
+    const newCategoryModalRef = ref<null | HTMLElement>(null);
     const loading = ref<boolean>(false);
 
-    const menuData = ref<NewAddressData>({
+    const categoryData = ref<NewAddressData>({
       name: "",
-      users: [],
+      parent_id: null,
     });
 
     const rules = ref({
       name: [
         {
           required: true,
-          message: "Please input menu name",
+          message: "Please input category name",
           trigger: "blur",
         },
       ],
@@ -168,11 +169,11 @@ export default defineComponent({
           loading.value = true;
           axios.defaults.headers.get['header-name'] = 'value';
           axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-          axios.post(process.env.VUE_APP_API_URL + '/new-menu',menuData.value)
+          axios.post(process.env.VUE_APP_API_URL + '/new-category',categoryData.value)
               .then(function (response) {
-                hideModal(newMenuModalRef.value);
+                hideModal(newCategoryModalRef.value);
                 Swal.fire({
-                  text: "Menu has been added successfully",
+                  text: "Category has been added successfully",
                   icon: "success",
                   buttonsStyling: false,
                   confirmButtonText: "Ok, got it!",
@@ -181,17 +182,17 @@ export default defineComponent({
                   },
                 })
               }).catch(function (error) {
-                      hideModal(newMenuModalRef.value);
-                      Swal.fire({
-                        text: "Sorry, looks like there are some errors detected, please try again.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                          confirmButton: "btn btn-primary",
-                        },
-                      });
-             });
+            hideModal(newCategoryModalRef.value);
+            Swal.fire({
+              text: "Sorry, looks like there are some errors detected, please try again.",
+              icon: "error",
+              buttonsStyling: false,
+              confirmButtonText: "Ok, got it!",
+              customClass: {
+                confirmButton: "btn btn-primary",
+              },
+            });
+          });
           //
         } else {
           Swal.fire({
@@ -209,12 +210,12 @@ export default defineComponent({
     };
 
     return {
-      menuData,
+      categoryData,
       submit,
       loading,
       formRef,
       rules,
-      newMenuModalRef,
+      newCategoryModalRef,
     };
   },
 });
