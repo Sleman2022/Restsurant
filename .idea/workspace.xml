@@ -20,26 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99643101-c7bf-4bf3-9abe-5359c65223fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Categories/CategoriesShowResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Resources/Items/ItemsShowResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children2.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children3.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/categories/categories_children4.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurant_frontend/src/components/widgets/categories/category.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Http/Controllers/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/CategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/ItemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/ItemService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/MenusService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Implementations/MenusService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/ICategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/ICategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IItemService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IItemService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IMenuService.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/app/Services/Interfaces/IMenuService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/layout/aside/AsidePrimary.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/store/modules/AuthModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant_frontend/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_frontend/src/views/Dashboard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant_backend/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant_backend/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +155,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab_Learning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -183,6 +165,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bein media\resaturant" />
       <recent name="D:\bein media\resaturant\restaurant_backend\app\Http\Resources\UsersResources" />
       <recent name="D:\bein media\resaturant\restaurant_backend\app\Http\Controllers" />
       <recent name="D:\bein media\resaturant\restaurant_frontend\src" />
@@ -204,7 +187,7 @@
       <workItem from="1664961512635" duration="1190000" />
       <workItem from="1664962730282" duration="31571000" />
       <workItem from="1665047588195" duration="47504000" />
-      <workItem from="1665128013653" duration="45465000" />
+      <workItem from="1665128013653" duration="46032000" />
     </task>
     <task id="LOCAL-00001" summary="database migration and seeders">
       <created>1664962857337</created>
@@ -262,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665165401288</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="menu computed and show to users">
+      <created>1665181048160</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1665181048160</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +279,8 @@
     <MESSAGE value="categories crud2" />
     <MESSAGE value="items crud" />
     <MESSAGE value="menus categories logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="menus categories logic" />
+    <MESSAGE value="menu computed and show to users" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu computed and show to users" />
   </component>
   <component name="WindowStateProjectService">
     <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1665180523256">
@@ -312,10 +303,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="613" y="111" key="RollbackChangesDialog/0.0.1536.816@0.0.1536.816" timestamp="1664976240392" />
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1665165405026">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1665181114391">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1665165405026" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1665181114391" />
     <state x="478" y="141" width="807" height="534" key="find.popup" timestamp="1665178500022">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
